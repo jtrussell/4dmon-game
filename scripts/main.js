@@ -1,5 +1,6 @@
 var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create, update: update, render: render })
   , player
+  , enemies, pokeballs, greatballs, ultraballs, masterballs
   , currentSpeed = 0
   , maximumSpeed = 200;
 
@@ -15,6 +16,17 @@ function create() {
   // Add the player sprite to the game, set the anchor point at its center
   player = game.add.sprite(400, 300, 'arrow');
   player.anchor.setTo(0.5, 0.5);
+
+  // All enemies
+  enemies = game.add.group();
+
+  // Specific enemies
+  pokeballs = game.add.group(enemies);
+  greatballs = game.add.group(enemies);
+  ultraballs = game.add.group(enemies);
+  masterballs = game.add.group(enemies);
+
+  // Maybe just create an emitter at one of the corners?
 
   // Enable physics on the player
   game.physics.enable(player, Phaser.Physics.ARCADE);
